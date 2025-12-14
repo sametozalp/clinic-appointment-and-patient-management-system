@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ozalp</groupId>
-	<artifactId>report-service</artifactId>
+	<artifactId>clinical-report-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>report-service</name>
+	<name>clinical-report-service</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

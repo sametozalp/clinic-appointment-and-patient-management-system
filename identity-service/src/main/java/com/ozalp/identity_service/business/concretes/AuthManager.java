@@ -12,6 +12,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class AuthManager implements AuthService {
@@ -22,9 +24,19 @@ public class AuthManager implements AuthService {
     public UserResponse register(CreateUserRequest request) {
         User user = mapper.toEntity(request);
         user.setActive(true);
-        user.setRole(Role.USER);
+        user.setRole(Role.PATIENT);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return mapper.toResponse(repository.save(user));
+    }
+
+    @Override
+    public UserResponse registerAdmin(CreateUserRequest request) {
+        User user = mapper.toEntity(request);
+        user.setActive(true);
+        user.setRole(Role.ADMIN);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return mapper.toResponse(repository.save(user));
+
     }
 
     public UserResponse login(LoginUserRequest request) {
@@ -41,5 +53,15 @@ public class AuthManager implements AuthService {
                 .active(user.isActive())
                 .createdAt(user.getCreatedAt())
                 .build();
+    }
+
+    @Override
+    public UserResponse getUser(String email) {
+        Optional<User> user = repository.findByEmail(email);
+
+        if (user.isPresent())
+            return mapper.toResponse(user.get());
+
+        return null;
     }
 }

@@ -8,27 +8,35 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="clinical-notification-service" />
+        <module name="clinical-identity-service" />
+        <module name="clinical-doctor-service" />
         <module name="clinical-appointment-service" />
-        <module name="identity-service" />
         <module name="clinical-audit-service" />
-        <module name="doctor-service" />
       </profile>
-      <profile name="Annotation profile for report-service" enabled="true">
+      <profile name="Annotation profile for clinical-report-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="report-service" />
+        <module name="clinical-report-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="doctor-service" target="21" />
+      <module name="identity-service" target="21" />
+      <module name="report-service" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clinical-appointment-service" options="-parameters" />
       <module name="clinical-audit-service" options="-parameters" />
+      <module name="clinical-doctor-service" options="-parameters" />
+      <module name="clinical-identity-service" options="-parameters" />
       <module name="clinical-notification-service" options="-parameters" />
+      <module name="clinical-report-service" options="-parameters" />
       <module name="doctor-service" options="-parameters" />
       <module name="identity-service" options="-parameters" />
       <module name="report-service" options="-parameters" />

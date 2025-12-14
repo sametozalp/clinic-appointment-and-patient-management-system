@@ -8,5 +8,9 @@ public interface AuthService {
 
     UserResponse register(CreateUserRequest request);
 
+    UserResponse registerAdmin(CreateUserRequest request);
+
     UserResponse login(LoginUserRequest request);
+
+    UserResponse getUser(String email);
 }

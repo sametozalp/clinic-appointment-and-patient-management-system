@@ -1,5 +1,8 @@
 package com.ozalp.identity_service.business.enums;
 
 public enum Role {
-    USER
+    PATIENT,
+    DOCTOR,
+    ADMIN,
+    SYSTEM
 }
