@@ -24,7 +24,7 @@ public class IdentityServiceApplication implements CommandLineRunner {
         UserResponse admin = authService.getUser("admin@gmail.com");
         if (admin == null) {
             CreateUserRequest request = new CreateUserRequest("admin@gmail.com", "123456");
-            authService.register(request);
+            authService.registerAdmin(request);
         }
     }
 }
