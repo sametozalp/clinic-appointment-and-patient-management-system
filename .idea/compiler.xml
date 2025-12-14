@@ -10,6 +10,7 @@
         <module name="clinical-notification-service" />
         <module name="clinical-appointment-service" />
         <module name="identity-service" />
+        <module name="clinical-audit-service" />
         <module name="doctor-service" />
       </profile>
     </annotationProcessing>
@@ -17,6 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clinical-appointment-service" options="-parameters" />
+      <module name="clinical-audit-service" options="-parameters" />
       <module name="clinical-notification-service" options="-parameters" />
       <module name="doctor-service" options="-parameters" />
       <module name="identity-service" options="-parameters" />
