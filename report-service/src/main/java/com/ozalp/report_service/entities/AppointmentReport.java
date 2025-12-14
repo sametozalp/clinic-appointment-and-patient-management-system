@@ -15,6 +15,7 @@ public class AppointmentReport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private UUID appointmentId;
 
     private UUID doctorId;
