@@ -1,4 +1,4 @@
-package com.ozalp.appointment_service.business.services;
+package com.ozalp.appointment_service.business.abstracts;
 
 import com.ozalp.appointment_service.models.dtos.requests.CreateAppointmentRequest;
 import com.ozalp.appointment_service.models.dtos.responses.AppointmentResponse;

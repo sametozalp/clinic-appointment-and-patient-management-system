@@ -1,6 +1,6 @@
-package com.ozalp.appointment_service.business.managers;
+package com.ozalp.appointment_service.business.concretes;
 
-import com.ozalp.appointment_service.business.services.AppointmentService;
+import com.ozalp.appointment_service.business.abstracts.AppointmentService;
 import com.ozalp.appointment_service.dataAccess.AppointmentRepository;
 import com.ozalp.appointment_service.entities.Appointment;
 import com.ozalp.appointment_service.enums.AppointmentStatus;

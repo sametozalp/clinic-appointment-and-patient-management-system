@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="clinical-notification-service" />
         <module name="clinical-appointment-service" />
+        <module name="identity-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clinical-appointment-service" options="-parameters" />
       <module name="clinical-notification-service" options="-parameters" />
+      <module name="identity-service" options="-parameters" />
     </option>
   </component>
 </project>
