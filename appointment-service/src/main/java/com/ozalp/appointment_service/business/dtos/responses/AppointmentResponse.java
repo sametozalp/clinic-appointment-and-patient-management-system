@@ -1,4 +1,4 @@
-package com.ozalp.appointment_service.models.dtos.responses;
+package com.ozalp.appointment_service.business.dtos.responses;
 
 import com.ozalp.appointment_service.enums.AppointmentStatus;
 import jakarta.persistence.EnumType;

@@ -1,7 +1,8 @@
-package com.ozalp.appointment_service.messaging.producer;
+package com.ozalp.appointment_service.business.concretes;
 
+import com.ozalp.appointment_service.business.abstracts.AppointmentEventProducerService;
+import com.ozalp.appointment_service.business.message.AppointmentCreatedEvent;
 import com.ozalp.appointment_service.config.RabbitMQConfig;
-import com.ozalp.appointment_service.models.dtos.message.AppointmentCreatedEvent;
 import com.ozalp.appointment_service.entities.Appointment;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Component
 @AllArgsConstructor
-public class AppointmentEventProducer {
+public class AppointmentEventProducerManager implements AppointmentEventProducerService {
 
     private final RabbitTemplate rabbitTemplate;
 

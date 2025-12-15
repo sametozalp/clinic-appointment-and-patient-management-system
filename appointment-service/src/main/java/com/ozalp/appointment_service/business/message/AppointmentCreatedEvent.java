@@ -1,4 +1,4 @@
-package com.ozalp.appointment_service.models.dtos.message;
+package com.ozalp.appointment_service.business.message;
 
 import lombok.*;
 

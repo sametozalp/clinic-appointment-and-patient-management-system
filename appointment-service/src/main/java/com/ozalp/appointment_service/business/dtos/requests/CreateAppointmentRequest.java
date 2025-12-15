@@ -1,4 +1,4 @@
-package com.ozalp.appointment_service.models.dtos.requests;
+package com.ozalp.appointment_service.business.dtos.requests;
 
 import lombok.Getter;
 import lombok.Setter;

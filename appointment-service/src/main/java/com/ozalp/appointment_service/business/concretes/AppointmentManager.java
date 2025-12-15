@@ -4,10 +4,9 @@ import com.ozalp.appointment_service.business.abstracts.AppointmentService;
 import com.ozalp.appointment_service.dataAccess.AppointmentRepository;
 import com.ozalp.appointment_service.entities.Appointment;
 import com.ozalp.appointment_service.enums.AppointmentStatus;
-import com.ozalp.appointment_service.mappers.AppointmentMapper;
-import com.ozalp.appointment_service.messaging.producer.AppointmentEventProducer;
-import com.ozalp.appointment_service.models.dtos.requests.CreateAppointmentRequest;
-import com.ozalp.appointment_service.models.dtos.responses.AppointmentResponse;
+import com.ozalp.appointment_service.business.mappers.AppointmentMapper;
+import com.ozalp.appointment_service.business.dtos.requests.CreateAppointmentRequest;
+import com.ozalp.appointment_service.business.dtos.responses.AppointmentResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AppointmentManager implements AppointmentService {
 
     private final AppointmentRepository repository;
-    private final AppointmentEventProducer eventProducer;
+    private final AppointmentEventProducerManager eventProducer;
     private final AppointmentMapper mapper;
 
     @Transactional

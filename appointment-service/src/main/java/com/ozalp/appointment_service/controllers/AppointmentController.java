@@ -1,7 +1,7 @@
 package com.ozalp.appointment_service.controllers;
 
 import com.ozalp.appointment_service.business.abstracts.AppointmentService;
-import com.ozalp.appointment_service.models.dtos.requests.CreateAppointmentRequest;
+import com.ozalp.appointment_service.business.dtos.requests.CreateAppointmentRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
