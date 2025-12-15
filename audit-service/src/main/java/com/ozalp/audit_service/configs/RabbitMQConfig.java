@@ -36,7 +36,6 @@ public class RabbitMQConfig {
                 .durable(AUDIT_QUEUE)
                 .withArgument("x-dead-letter-exchange", AUDIT_DLX)
                 .withArgument("x-dead-letter-routing-key", AUDIT_DLQ)
-                .withArgument("x-max-delivery-count", 3) // 3 kere dene olmazsa dlq
                 .build();
     }
 
