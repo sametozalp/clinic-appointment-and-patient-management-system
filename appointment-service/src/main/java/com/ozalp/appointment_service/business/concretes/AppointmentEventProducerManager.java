@@ -31,7 +31,7 @@ public class AppointmentEventProducerManager implements AppointmentEventProducer
 
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.APPOINTMENT_EXCHANGE,
-                RabbitMQConfig.APPOINTMENT_CREATED_KEY,
+                RabbitMQConfig.APPOINTMENT_CREATED_ROUTING_KEY,
                 event
         );
     }

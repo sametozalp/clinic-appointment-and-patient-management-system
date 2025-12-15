@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     public static final String APPOINTMENT_EXCHANGE = "appointment.exchange";
-    public static final String APPOINTMENT_CREATED_KEY = "appointment.created";
+    public static final String APPOINTMENT_CREATED_ROUTING_KEY = "appointment.created";
 
     @Bean
     public TopicExchange appointmentExchange() {
