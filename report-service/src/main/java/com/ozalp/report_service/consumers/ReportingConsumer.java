@@ -7,13 +7,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import static com.ozalp.report_service.configs.RabbitMQConfig.REPORTING_QUEUE;
+
 @Component
 @RequiredArgsConstructor
 public class ReportingConsumer {
 
     private final AppointmentReportRepository repository;
 
-    @RabbitListener(queues = "reporting.queue")
+    @RabbitListener(queues = REPORTING_QUEUE)
     public void consume(AppointmentCreatedEvent event) {
 
         AppointmentReport r = new AppointmentReport();
