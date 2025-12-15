@@ -5,6 +5,7 @@ import com.ozalp.appointment_service.business.message.AppointmentCreatedEvent;
 import com.ozalp.appointment_service.config.RabbitMQConfig;
 import com.ozalp.appointment_service.entities.Appointment;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +33,11 @@ public class AppointmentEventProducerManager implements AppointmentEventProducer
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.APPOINTMENT_EXCHANGE,
                 RabbitMQConfig.APPOINTMENT_CREATED_ROUTING_KEY,
-                event
+                event, message -> {
+                    message.getMessageProperties()
+                            .setDeliveryMode(MessageDeliveryMode.PERSISTENT); // mesajı diske yazma. sever çökse bile mesaj durur
+                    return message;
+                }
         );
     }
 }

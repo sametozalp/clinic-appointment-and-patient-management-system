@@ -13,7 +13,11 @@ public class RabbitMQConfig {
 
     @Bean
     public TopicExchange appointmentExchange() {
-        return new TopicExchange(APPOINTMENT_EXCHANGE);
+        return new TopicExchange(
+                APPOINTMENT_EXCHANGE,
+                true,
+                false
+        );
     }
 
     @Bean
