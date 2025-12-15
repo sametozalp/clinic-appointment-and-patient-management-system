@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -26,26 +27,26 @@ public class AuditEventConsumer {
     private final ObjectMapper mapper;
     private final Jackson2JsonMessageConverter jackson2JsonMessageConverter;
 
-//    @RabbitListener(queues = AUDIT_QUEUE)
-//    public void consume(AppointmentCreatedEvent event) throws Exception {
-//
-//        AuditLog logEntry = new AuditLog();
-//        logEntry.setEventType(event.getClass().getSimpleName());
-//        logEntry.setCreatedAt(LocalDateTime.now());
-//        logEntry.setPayload(mapper.writeValueAsString(event));
-//
-//        repository.save(logEntry);
-//
-//        log.info("AUDIT LOG SAVED");
-//    }
+    @RabbitListener(queues = AUDIT_QUEUE)
+    public void consume(AppointmentCreatedEvent event) throws Exception {
+
+        AuditLog logEntry = new AuditLog();
+        logEntry.setEventType(event.getClass().getSimpleName());
+        logEntry.setCreatedAt(LocalDateTime.now());
+        logEntry.setPayload(mapper.writeValueAsString(event));
+
+        repository.save(logEntry);
+
+        log.info("AUDIT LOG SAVED");
+    }
 
     @RabbitListener(queues = AUDIT_QUEUE, containerFactory = "rabbitListenerContainerFactory")
     public void consume(AppointmentCreatedEvent event, Channel channel, Message message) throws IOException {
 
         try {
             AuditLog log = new AuditLog();
-            log.setEventType("AppointmentCreated");
-            log.setPayload(event.toString());
+            log.setEventType(event.getClass().getSimpleName());
+            log.setPayload(mapper.writeValueAsString(event));
             log.setCreatedAt(LocalDateTime.now());
 
             repository.save(log);
