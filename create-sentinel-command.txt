@@ -1,0 +1,1 @@
+docker run -d --name sentinel1 -p 6391:26379 --network redis-network -v C:/Users/Samet/Desktop/sentinel.conf:/usr/local/etc/redis/sentinel.conf redis redis-sentinel /usr/local/etc/redis/sentinel.conf

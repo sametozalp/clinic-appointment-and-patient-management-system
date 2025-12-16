@@ -7,6 +7,8 @@ import com.ozalp.doctor_service.business.mappers.DoctorMapper;
 import com.ozalp.doctor_service.entities.Doctor;
 import com.ozalp.doctor_service.repositories.DoctorRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +21,14 @@ public class DoctorManager implements DoctorService {
     private final DoctorRepository repository;
     private final DoctorMapper mapper;
 
+    @CacheEvict(value = "doctors", key = "'all'")
     public DoctorResponse create(CreateDoctorRequest request) {
         Doctor doctor = mapper.toEntity(request);
         doctor.setActive(true);
         return mapper.toResponse(repository.save(doctor));
     }
 
+    @Cacheable(value = "doctors", key = "'all'")
     public List<DoctorResponse> getAll() {
         return repository.findAll()
                 .stream()
