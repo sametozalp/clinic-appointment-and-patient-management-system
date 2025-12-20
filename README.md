@@ -9,32 +9,9 @@ Event-driven, Spring Boot microservices for clinic appointments, doctors, identi
 - Messaging: RabbitMQ (`appointment.exchange` topic) fans out `appointment.*` events to consumers.
 - Caching: Redis master + 3 slaves with 3 Sentinels (Docker). `doctor-service` caches doctor lists with 10-minute TTL using JSON serialization.
 
-```
-               +--------------------+
-               |  identity-service  |
-               +--------------------+
-                         |
-                         v
- +------------------+   REST   +-------------------+
- | doctor-service   |<-------->| appointment-service|-- publishes --> RabbitMQ
- +------------------+          +-------------------+
-        |   ^                               |
-        |   |                               | appointment.exchange (topic)
-        |   |                               v
-        |  Redis (cache)       +-------------------+   +------------------+
-        |  Master + 3 Slaves   | notification-svc  |   |   audit-service  |
-        |  3x Sentinels        +-------------------+   +------------------+
-        |                                   \            manual ACK + DLQ
-        |                                    \------------------------------+
-        |                                                               |   |
-        |                                                     +-------------------+
-        |                                                     |  report-service   |
-        |                                                     +-------------------+
-        |                                                        manual ACK + DLQ
-        |
-        v
-   PostgreSQL
-```
+<p align="center">
+  <img src="images/system-design.png" alt="System Design">
+</p>
 
 ## Services
 
